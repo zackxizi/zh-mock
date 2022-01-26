@@ -3,7 +3,7 @@
   "version": "0.0.1-alpha",
   "description": "基于xmlHttpRequest fetch 的 proxy 谷歌浏览器拓展",
   "main": "index.js",
-  "repository": "https://github.com/ITzhangxi/zh-mock-react.git",
+  "repository": "https://github.com/zackxizi/zh-mock.git",
   "author": "zackxizi <zackxizi@qq.com>",
   "license": "MIT",
   "scripts": {
