@@ -2,13 +2,14 @@
  * @Description: 表单
  * @Author: xi_zi
  * @Date: 2022-01-25 21:20:34
- * @LastEditTime: 2022-01-25 23:00:46
+ * @LastEditTime: 2022-01-28 09:56:38
  * @LastEditors: xi_zi
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Form, Input, Button, Select, Tooltip, Radio, Switch } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import CodeMirror from './CodeMirror';
+import CodeMirror, { ICodeMirrorValue } from '../codeMirror';
+import { RuleObject } from 'antd/lib/form';
 
 const { Option } = Select;
 
@@ -62,6 +63,11 @@ function FormInput() {
     });
   };
 
+  const checkBody = useCallback((_: RuleObject, { code }: ICodeMirrorValue = { code: '' }) => {
+    if (code) return Promise.resolve();
+    return Promise.reject(new Error('"body" is is required'));
+  }, []);
+
   return (
     <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
       <Form.Item
@@ -101,11 +107,11 @@ function FormInput() {
         </Radio.Group>
       </Form.Item>
 
-      <Form.Item name="open" label="状态">
+      <Form.Item name="open" label="open">
         <Switch checked />
       </Form.Item>
 
-      <Form.Item name="body" label="响应体">
+      <Form.Item name="body" label="body" rules={[{ required: true, validator: checkBody }]}>
         <CodeMirror />
       </Form.Item>
 

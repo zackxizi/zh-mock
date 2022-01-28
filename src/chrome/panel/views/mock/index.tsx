@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './index.less';
 import { Table, Space, Button } from 'antd';
-import Search from './search';
-import FormMock from './formMock';
+import Search from './components/search';
+import FormMock from './components/formMock';
 const columns = [
   {
     title: 'Name',
